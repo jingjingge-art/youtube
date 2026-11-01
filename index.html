@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>IPTV 订阅分组</title>
+    <style>
+      :root {
+        --bg: #0f172a;
+        --card: #111827;
+        --card2: #1f2937;
+        --text: #e5e7eb;
+        --muted: #9ca3af;
+        --accent: #60a5fa;
+        --accent2: #34d399;
+        --border: rgba(255,255,255,0.08);
+      }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        background: linear-gradient(180deg, #020817 0%, #0f172a 100%);
+        color: var(--text);
+      }
+      .wrap {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 48px 20px 80px;
+      }
+      h1 {
+        margin: 0 0 12px;
+        font-size: clamp(2rem, 4vw, 3rem);
+      }
+      .subtitle {
+        color: var(--muted);
+        margin-bottom: 30px;
+        line-height: 1.7;
+      }
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 18px;
+      }
+      .card {
+        background: rgba(17, 24, 39, 0.9);
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        padding: 18px 18px 14px;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.18);
+      }
+      .card h2 {
+        margin: 0 0 10px;
+        font-size: 1.1rem;
+      }
+      .card a {
+        color: var(--accent);
+        text-decoration: none;
+        font-weight: 600;
+      }
+      .card a:hover {
+        text-decoration: underline;
+      }
+      .meta {
+        margin-top: 12px;
+        color: var(--muted);
+        font-size: 0.9rem;
+      }
+      .badge {
+        display: inline-block;
+        padding: 4px 8px;
+        border-radius: 999px;
+        background: rgba(96, 165, 250, 0.12);
+        border: 1px solid rgba(96,165,250,0.35);
+        color: #bfdbfe;
+        font-size: 0.75rem;
+        margin-bottom: 8px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <h1>IPTV 订阅分组</h1>
+      <div class="subtitle">
+        这是自动生成的分组订阅页。页面会按分类列出 M3U 文件，支持直接点开播放列表。<br />
+        数据会按定时任务自动刷新，最新订阅可直接使用生成后的文件。
+      </div>
+
+      <div class="grid">
+        <div class="card">
+          <div class="badge">国内</div>
+          <h2>国内频道</h2>
+          <a href="generated/国内.m3u">打开 国内.m3u</a>
+        </div>
+        <div class="card">
+          <div class="badge">国外</div>
+          <h2>国外频道</h2>
+          <a href="generated/国外.m3u">打开 国外.m3u</a>
+        </div>
+        <div class="card">
+          <div class="badge">新闻</div>
+          <h2>新闻频道</h2>
+          <a href="generated/新闻.m3u">打开 新闻.m3u</a>
+        </div>
+        <div class="card">
+          <div class="badge">电影</div>
+          <h2>电影频道</h2>
+          <a href="generated/电影.m3u">打开 电影.m3u</a>
+        </div>
+        <div class="card">
+          <div class="badge">综艺</div>
+          <h2>综艺频道</h2>
+          <a href="generated/综艺.m3u">打开 综艺.m3u</a>
+        </div>
+        <div class="card">
+          <div class="badge">体育</div>
+          <h2>体育频道</h2>
+          <a href="generated/体育.m3u">打开 体育.m3u</a>
+        </div>
+        <div class="card">
+          <div class="badge">少儿</div>
+          <h2>少儿频道</h2>
+          <a href="generated/少儿.m3u">打开 少儿.m3u</a>
+        </div>
+        <div class="card">
+          <div class="badge">纪录</div>
+          <h2>纪录频道</h2>
+          <a href="generated/纪录.m3u">打开 纪录.m3u</a>
+        </div>
+        <div class="card">
+          <div class="badge">监控</div>
+          <h2>监控直播</h2>
+          <a href="generated/监控.m3u">打开 监控.m3u</a>
+        </div>
+        <div class="card">
+          <div class="badge">其他</div>
+          <h2>其他频道</h2>
+          <a href="generated/其他.m3u">打开 其他.m3u</a>
+        </div>
+      </div>
+
+      <div class="meta">
+        说明：本页是静态页面，并与仓库中的 generated 目录同步；若需要更改订阅源，修改源文件后更新任务即可自动重新生成。
+      </div>
+    </div>
+  </body>
+</html>
