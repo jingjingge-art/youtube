@@ -3,8 +3,7 @@ import urllib.request
 from pathlib import Path
 
 RAW_SOURCE = (
-    "https://raw.githubusercontent.com/jingjingge-art/youtube/refs/heads/main/"
-    "全球直播电视监控iptvCAM-12-หาดตาแหวน.txt"
+    "https://raw.githubusercontent.com/jingjingge-art/youtube/main/全球直播电视监控iptvCAM-12-หาดตาแหวน.txt"
 )
 
 OUTPUT_DIR = Path("generated")
@@ -28,8 +27,7 @@ DOMESTIC_KEYWORDS = [
     "江苏", "浙江", "山东", "重庆", "四川", "湖北", "安徽", "河南",
     "辽宁", "吉林", "黑龙江", "广西", "海南", "甘肃", "陕西", "云南",
     "贵州", "青海", "宁夏", "新疆", "内地", "港澳", "香港", "澳门", "台湾",
-    "中国交通", "熊猫直播", "中央电视塔", "直播中国", "南京", "大湾区",
-    "长江", "珠江", "江苏", "黑龙江"
+    "中国交通", "熊猫直播", "中央电视塔", "直播中国", "南京", "大湾区", "长江", "珠江"
 ]
 
 FOREIGN_KEYWORDS = [
@@ -67,7 +65,7 @@ CHILD_KEYWORDS = [
 
 DOCUMENTARY_KEYWORDS = [
     "纪录", "documentary", "nature", "地理中国", "人与自然", "航拍",
-    "飞碟", "自然传奇", "中国村庄", "地理", "自��"
+    "飞碟", "自然传奇", "中国村庄", "地理"
 ]
 
 SURVEILLANCE_KEYWORDS = [
@@ -77,12 +75,10 @@ SURVEILLANCE_KEYWORDS = [
     "新街口", "鼓楼", "长江大桥", "南站", "小公园亭"
 ]
 
-
 def fetch_text(url: str) -> str:
     req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0"})
     with urllib.request.urlopen(req, timeout=60) as resp:
         return resp.read().decode("utf-8", errors="replace")
-
 
 def split_urls(raw: str):
     urls = []
@@ -92,10 +88,8 @@ def split_urls(raw: str):
             urls.append(p)
     return urls
 
-
 def normalize_text(s: str) -> str:
-    return (s or "").replace("\r", "").replace("\n", "").strip()
-
+    return (s or "").replace("\\r", "").replace("\\n", "").strip()
 
 def parse_entries(text: str):
     entries = []
@@ -118,9 +112,7 @@ def parse_entries(text: str):
             for url in urls:
                 entries.append({"name": name, "url": url})
             continue
-
     return entries
-
 
 def classify_name(name: str, url: str = "") -> str:
     text = f"{name} {url}".lower()
@@ -139,14 +131,11 @@ def classify_name(name: str, url: str = "") -> str:
         return "综艺"
     if any(k.lower() in text for k in NEWS_KEYWORDS):
         return "新闻"
-
     if any(k.lower() in text for k in FOREIGN_KEYWORDS):
         return "国外"
     if any(k.lower() in text for k in DOMESTIC_KEYWORDS):
         return "国内"
-
     return "其他"
-
 
 def write_m3u(path: Path, items):
     lines = ["#EXTM3U"]
@@ -161,12 +150,19 @@ def write_m3u(path: Path, items):
         seen.add(url)
         lines.append(f'#EXTINF:-1 tvg-name="{name}",{name}')
         lines.append(url)
-    path.write_text("\n".join(lines) + "\n", encoding="utf-8")
-
+    path.write_text("\\n".join(lines) + "\\n", encoding="utf-8")
 
 def main():
-    source_text = fetch_text(RAW_SOURCE)
+    try:
+        source_text = fetch_text(RAW_SOURCE)
+        print(f"Fetched source length: {len(source_text)}")
+    except Exception as e:
+        print(f"FETCH FAILED: {e}")
+        raise
+
     entries = parse_entries(source_text)
+    print(f"Parsed entries: {len(entries)}")
+
     buckets = {key: [] for key in CATEGORY_FILES}
     for entry in entries:
         name = normalize_text(entry.get("name", ""))
@@ -179,8 +175,7 @@ def main():
         write_m3u(target, buckets.get(category, []))
         print(f"{category}: {len(buckets.get(category, []))} 条 -> {target}")
 
-    print("\n已完成分类输出。")
-
+    print("\\n已完成分类输出。")
 
 if __name__ == "__main__":
     main()
