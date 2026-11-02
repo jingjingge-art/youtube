@@ -3,7 +3,8 @@ import urllib.request
 from pathlib import Path
 
 RAW_SOURCE = (
-    "https://raw.githubusercontent.com/jingjingge-art/youtube/main/全球直播电视监控iptvCAM-12-หาดตาแหวน.txt"
+    "https://raw.githubusercontent.com/jingjingge-art/youtube/main/"
+    "全球直播电视监控iptvCAM-12-หาดตาแหวน.txt"
 )
 
 OUTPUT_DIR = Path("generated")
