@@ -698,7 +698,7 @@ AMC音乐,https://AMChls.wns.live/hls/stream.m3u8
 🇮🇪sports,https://fastly.live.brightcove.com/6384196213112/eu-west-1/1555966122001/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJob3N0IjoieDl2YzlnLmVncmVzcy55ODN1ZWIiLCJhY2NvdW50X2lkIjoiMTU1NTk2NjEyMjAwMSIsImVobiI6ImZhc3RseS5saXZlLmJyaWdodGNvdmUuY29tIiwiaXNzIjoiYmxpdmUtcGxheWJhY2stc291cmNlLWFwaSIsInN1YiI6InBhdGhtYXB0b2tlbiIsImF1ZCI6WyIxNTU1OTY2MTIyMDAxIl0sImp0aSI6IjYzODQxOTYyMTMxMTIifQ.Co2xR3kmJBoxTaFTpwU0b37lJ05vNt-y32-SwfM26EA/chunklist_hls720p.m3u8
 🇧🇳台湾馫唐人电台,https://live.ntdtv.com/aplive200/playlist.m3u8
 🎧我想更懂你,https://pan.baidu.re/view.php/0e30ca7975bc65070ad84039e4f38214.mp4
-
+🏥康复治疗,https://mpimg.cn/view.php/507a8bb08344e2d6a8777a5262de3be3.mp4
 
 
 
